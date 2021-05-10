@@ -1,18 +1,28 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button } from "../UI";
 import { Container, Title, Text, Section } from "./styles";
 
-export default function CustomerCard({ name, cpf, birth, spouse, ...rest }) {
+export default function CustomerCard({
+  name,
+  cpf,
+  birth,
+  spouse,
+  id,
+  ...rest
+}) {
   return (
     <Container {...rest}>
       <Section>
-        <Title>Rodrigo da Silva Gomes</Title>
-        <Text>CPF: 111.111.111-11</Text>
-        <Text>Nasimento: 21/01/2002</Text>
-        <Text>Cônjuge: Fulana da silva andrade</Text>
+        <Title>{name}</Title>
+        <Text>CPF: {cpf}</Text>
+        <Text>Nasimento: {birth}</Text>
+        <Text>Cônjuge: {spouse}</Text>
       </Section>
       <Section>
-        <Button>Detalhes</Button>
+        <Button as={Link} to="/teste">
+          Detalhes
+        </Button>
       </Section>
     </Container>
   );
