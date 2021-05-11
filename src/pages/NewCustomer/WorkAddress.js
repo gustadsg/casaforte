@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Input, Loading, PageTitle, TextArea } from "../../components";
+import { Button, Input, Loading, PageTitle } from "../../components";
 import { Centered, Divided, Section, SPageIndex } from "./styles";
 import api from "../../services/api";
 
