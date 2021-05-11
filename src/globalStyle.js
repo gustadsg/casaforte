@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import background from "./assets/background.svg";
 
 export const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
@@ -8,7 +9,10 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body{
-    background-color: ${({ theme }) => theme.secondary}
+    background-color: ${({ theme }) => theme.secondary};
+    background-image: url(${background});
+    background-attachment: scroll;
+    background-size: contain;
   }
   font-family: 'Poppins', sans-serif;
 `;
