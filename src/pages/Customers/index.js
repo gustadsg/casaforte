@@ -12,17 +12,24 @@ export default function Customers() {
   const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
+    setLoading(true);
     api
       .get("/customer")
       .then((response) => {
         setCustomers(response.data);
       })
-      .catch((err) => {})
-      .finally(() => {});
+      .catch((err) => {
+        message.error(
+          err?.response?.data?.message ||
+            "Não foi possível obter dados dos clientes"
+        );
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   return (
     <div>
+      {loading && <Loading />}
       <Header>
         <PageTitle>Clientes</PageTitle>
         <Icon src={plus} alt="Criar novo cliente" />
