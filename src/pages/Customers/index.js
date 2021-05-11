@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { message } from "antd";
 import api from "../../services/api";
 
-import { CustomerCard, Icon, Input, PageTitle } from "../../components";
+import {
+  CustomerCard,
+  Icon,
+  Input,
+  Loading,
+  PageTitle,
+} from "../../components";
 import { Body, CardsContainer, Header, Section } from "./styles";
 
 import plus from "../../assets/plus.svg";
@@ -10,6 +18,7 @@ import mag_glass from "../../assets/magnifying-glass.svg";
 
 export default function Customers() {
   const [customers, setCustomers] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -32,7 +41,9 @@ export default function Customers() {
       {loading && <Loading />}
       <Header>
         <PageTitle>Clientes</PageTitle>
-        <Icon src={plus} alt="Criar novo cliente" />
+        <Link to="/customer/register">
+          <SIcon src={plus} alt="Criar novo cliente" />
+        </Link>
       </Header>
       <Body>
         <Section>
@@ -59,4 +70,7 @@ export default function Customers() {
 const SCustomerCard = styled(CustomerCard)`
   margin: 10px 0;
   margin-right: 20px;
+`;
+const SIcon = styled(Icon)`
+  cursor: pointer;
 `;
