@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Icon } from "..";
 
 export default function Input({
   suffix,
@@ -9,18 +8,13 @@ export default function Input({
   onChange,
   label,
   margin,
-  required,
   ...rest
 }) {
   return (
     <Label margin={margin}>
       {label}
-      {required && <Input.Required> *</Input.Required>}
       <Input.Wrapper width={width}>
-        <Input.Input onChange={onChange} value={value} {...rest} />
-        {suffix && (
-          <Icon src={suffix} size="16px" style={{ marginRight: 10 }} />
-        )}
+        <Input.TextArea onChange={onChange} value={value} {...rest} />
       </Input.Wrapper>
     </Label>
   );
@@ -32,9 +26,6 @@ const Label = styled.label`
 `;
 
 Input.Wrapper = styled.div`
-  border: ${({ theme }) => `solid 2px ${theme.grey}`};
-  border-radius: 5px;
-  width: ${({ width }) => (width ? width : "220px")};
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -46,22 +37,21 @@ Input.Wrapper = styled.div`
   }
 `;
 
-Input.Input = styled.input`
-  border: none;
-  width: 80%;
+Input.TextArea = styled.textarea`
+  border: ${({ theme }) => `solid 2px ${theme.grey}`};
+  border-radius: 5px;
+  width: ${({ width }) => (width ? width : "220px")};
+  width: 100%;
+  min-height: 50px;
   padding: 5px;
   margin-right: 5px;
 
   &:active {
-    border: none;
+    border: ${({ theme }) => `solid 2px ${theme.grey}`};
     outline: none;
   }
   &:focus {
-    border: none;
+    border: ${({ theme }) => `solid 2px ${theme.grey}`};
     outline: none;
   }
-`;
-
-Input.Required = styled.span`
-  color: red;
 `;

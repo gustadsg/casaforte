@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Icon } from "..";
 
-export default function Input({
+export default function Select({
   suffix,
   width,
   value,
@@ -15,13 +15,13 @@ export default function Input({
   return (
     <Label margin={margin}>
       {label}
-      {required && <Input.Required> *</Input.Required>}
-      <Input.Wrapper width={width}>
-        <Input.Input onChange={onChange} value={value} {...rest} />
+      {required && <Select.Required> *</Select.Required>}
+      <Select.Wrapper width={width}>
+        <Select.Select onChange={onChange} value={value} {...rest} />
         {suffix && (
           <Icon src={suffix} size="16px" style={{ marginRight: 10 }} />
         )}
-      </Input.Wrapper>
+      </Select.Wrapper>
     </Label>
   );
 }
@@ -31,7 +31,7 @@ const Label = styled.label`
   font-weight: ${({ theme }) => theme.bold};
 `;
 
-Input.Wrapper = styled.div`
+Select.Wrapper = styled.div`
   border: ${({ theme }) => `solid 2px ${theme.grey}`};
   border-radius: 5px;
   width: ${({ width }) => (width ? width : "220px")};
@@ -46,11 +46,12 @@ Input.Wrapper = styled.div`
   }
 `;
 
-Input.Input = styled.input`
+Select.Select = styled.select`
   border: none;
   width: 80%;
   padding: 5px;
   margin-right: 5px;
+  background-color: white;
 
   &:active {
     border: none;
@@ -62,6 +63,6 @@ Input.Input = styled.input`
   }
 `;
 
-Input.Required = styled.span`
+Select.Required = styled.span`
   color: red;
 `;
