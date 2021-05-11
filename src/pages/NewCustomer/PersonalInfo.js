@@ -9,7 +9,7 @@ export default function PersonalInfo({
   setCurrent,
   current,
   total,
-  setUser: setCustomer,
+  setCustomer,
 }) {
   const [loading, setLoading] = useState(false);
   const [inputs, setInputs] = useState({});

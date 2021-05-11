@@ -8,14 +8,14 @@ export default function NewCustomer() {
   const pages = [
     <PersonalInfo
       key={0}
-      setUser={setCustomer}
+      setCustomer={setCustomer}
       setCurrent={setCurrent}
       current={current}
       total={4}
     />,
     <PersonalAddress
       key={1}
-      goToNextPage={() => setCurrent((current) => current + 1)}
+      setCurrent={setCurrent}
       current={current}
       total={4}
     />,
