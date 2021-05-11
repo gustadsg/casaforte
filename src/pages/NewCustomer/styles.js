@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ReferenceCard } from "../../components";
 import PageIndex from "../../components/UI/PageIndex";
 
 export const Divided = styled.div`
@@ -28,4 +29,18 @@ export const Centered = styled.div`
 
 export const SPageIndex = styled(PageIndex)`
   margin: 20px 0;
+`;
+
+export const CardsContainer = styled.div`
+  margin: 20px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow-x: scroll;
+
+  padding: 20px 40px 20px 20px;
+`;
+
+export const SReferenceCard = styled(ReferenceCard)`
+  margin-right: 20px;
 `;

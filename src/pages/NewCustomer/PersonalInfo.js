@@ -14,6 +14,10 @@ export default function PersonalInfo({
   const [loading, setLoading] = useState(false);
   const [inputs, setInputs] = useState({});
 
+  function handleChange(e) {
+    setInputs({ ...inputs, [e.target.name]: e.target.value });
+  }
+
   function handleClick() {
     setLoading(true);
     api
@@ -47,9 +51,7 @@ export default function PersonalInfo({
                 label={input.label}
                 width="80%"
                 value={inputs[input.name]}
-                onChange={(e) =>
-                  setInputs({ ...inputs, [e.target.name]: e.target.value })
-                }
+                onChange={handleChange}
               >
                 {input["options"]?.map((opt) => (
                   <option value={opt.value}>{opt.title}</option>
@@ -62,9 +64,7 @@ export default function PersonalInfo({
                 label={input.label}
                 width="80%"
                 value={inputs[input.name]}
-                onChange={(e) =>
-                  setInputs({ ...inputs, [input.name]: e.target.value })
-                }
+                onChange={handleChange}
                 type={input["type"]}
               />
             )
@@ -78,16 +78,14 @@ export default function PersonalInfo({
               label={input.label}
               width="80%"
               value={inputs[input.name]}
-              onChange={(e) =>
-                setInputs({ ...inputs, [input.name]: e.target.value })
-              }
+              onChange={handleChange}
               type={input["type"]}
             />
           ))}
         </Section>
       </Divided>
       <Section>
-        <TextArea label="Observações" width="100%" />
+        <TextArea name="observation" label="Observações" width="100%" />
       </Section>
       <Centered>
         <Button onClick={handleClick}>Próxima etapa</Button>
