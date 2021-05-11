@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import { message } from "antd";
 import { Link } from "react-router-dom";
-import {
-  Button,
-  Input,
-  PageTitle,
-  Loading,
-  Icon,
-  ReferenceCard,
-} from "../../components";
+import { Button, Input, PageTitle, Loading, Icon } from "../../components";
 import {
   CardsContainer,
   Centered,
@@ -127,12 +120,7 @@ export default function ComertialReferences({
         </Section>
       </Divided>
       <Centered>
-        <Icon
-          src={plus}
-          onClick={handleClick}
-          style={{ cursor: "pointer" }}
-          onClick={handleClick}
-        />
+        <Icon src={plus} onClick={handleClick} style={{ cursor: "pointer" }} />
       </Centered>
       <CardsContainer>
         {customer?.comertialReferences?.map((ref) => (
