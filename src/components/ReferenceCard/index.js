@@ -1,7 +1,6 @@
 import React from "react";
 import { Icon } from "../UI";
 import { Info, Title, Wrapper, Text } from "./styles";
-import api from "../../services/api";
 
 import remove from "../../assets/remove.svg";
 
