@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Input, PageTitle, TextArea } from "../../components";
 import { Centered, Divided, Section, SPageIndex } from "./styles";
 
-export default function PersonalInfo({ current, total }) {
+export default function PersonalInfo({ current, total, setCurrent }) {
   return (
     <div>
       <PageTitle>Endereço Pessoal</PageTitle>
