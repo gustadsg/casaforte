@@ -4,3 +4,4 @@ export { default as Icon } from "./Icon";
 export { default as Input } from "./Input";
 export { default as TextArea } from "./TextArea";
 export { default as Tab } from "./Tab";
+export { default as PageSubtitle } from "./PageSubtitle";
