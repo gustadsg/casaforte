@@ -1,13 +1,12 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { Customers, NewCustomer } from "./pages";
+import { Route, Switch } from "react-router-dom";
+import { Customer, Customers, NewCustomer } from "./pages";
 
 export default function Routes() {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact component={Customers} path="/" />
-        <Route exact component={NewCustomer} path="/customer/register" />
-      </Switch>
-    </BrowserRouter>
+    <Switch>
+      <Route exact component={Customers} path="/" />
+      <Route exact component={NewCustomer} path="/cliente/cadastrar" />
+      <Route exact component={Customer} path="/cliente/:id" />
+    </Switch>
   );
 }
