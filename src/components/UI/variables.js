@@ -8,5 +8,6 @@ const theme = {
   semiBold: "600",
   medium: "500",
   regular: "400",
+  font: "Poppins, sans-serif",
 };
 export default theme;
