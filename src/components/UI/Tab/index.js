@@ -9,6 +9,7 @@ const Tab = styled.li`
   padding: 10px;
   border: ${({ theme }) => `solid 1px ${theme.grey}`};
   border-color: ${({ selected, theme }) => selected && theme.primary};
+  border-radius: 10px 0 0 0;
   cursor: pointer;
 
   color: ${({ selected, theme }) => (selected ? "white" : theme.primary)};
