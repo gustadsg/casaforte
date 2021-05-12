@@ -91,10 +91,10 @@ const letfSide = [
 const rightSide = [
   {
     label: "País",
-    name: "Country",
+    name: "country",
   },
   {
-    label: "cidade",
+    label: "Cidade",
     name: "city",
   },
   {
