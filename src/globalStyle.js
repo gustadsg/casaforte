@@ -9,6 +9,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body{
+    margin: 0;
+    padding: 0;
     background-color: ${({ theme }) => theme.secondary};
     background-image: url(${background});
     background-attachment: scroll;
