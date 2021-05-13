@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import PersonalInfo from "./PersonalInfo";
 import PersonalAddress from "./PersonalAddress";
 import WorkAddress from "./WorkAddress";
+import Purchases from "./Purchases";
 import { PageTitle, TabPanel } from "../../components";
 import { Wrapper } from "./styles";
 import api from "../../services/api";
@@ -31,6 +32,11 @@ export default function Customer({ match }) {
       name: "Referências Comerciais",
       position: 4,
       content: () => "body de Referências Comerciais",
+    },
+    {
+      name: "Compras",
+      position: 5,
+      content: () => <Purchases purchases={customer.purchases} />,
     },
   ];
 
