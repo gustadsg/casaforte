@@ -36,7 +36,9 @@ export default function Customer({ match }) {
     {
       name: "Compras",
       position: 5,
-      content: () => <Purchases purchases={customer.purchases} />,
+      content: () => (
+        <Purchases purchases={customer.purchases} id={customer.id} />
+      ),
     },
   ];
 

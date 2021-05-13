@@ -7,6 +7,12 @@ export const Divided = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin: 0;
+  padding: 0;
+
+  & > h2 {
+    margin: 0;
+  }
 `;
 
 export const Section = styled.section`
