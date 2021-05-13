@@ -12,9 +12,9 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     background-color: ${({ theme }) => theme.secondary};
-    background-image: url(${background});
-    background-attachment: scroll;
-    background-size: contain;
+    /* background-image: url(${background});
+    background-attachment: fixed;
+    background-size: contain; */
   }
   font-family: 'Poppins', sans-serif;
 `;
