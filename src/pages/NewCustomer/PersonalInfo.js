@@ -15,7 +15,6 @@ export default function PersonalInfo({
   const [inputs, setInputs] = useState({});
 
   function handleChange(e) {
-    console.log(inputs);
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   }
 
