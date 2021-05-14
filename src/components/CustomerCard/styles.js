@@ -8,7 +8,7 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  max-width: 500px;
+  width: 500px;
 `;
 
 export const Section = styled.div``;

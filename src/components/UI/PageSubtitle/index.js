@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-const PageTitle = styled.h1`
+const PageSubtitle = styled.h2`
   color: ${({ theme }) => theme.secondary};
   font-family: ${({ theme }) => theme.font};
 `;
 
-export default PageTitle;
+export default PageSubtitle;

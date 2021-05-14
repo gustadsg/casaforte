@@ -41,7 +41,7 @@ export default function Customers() {
       {loading && <Loading />}
       <Header>
         <PageTitle>Clientes</PageTitle>
-        <Link to="/customer/register">
+        <Link to="/cliente/cadastrar">
           <SIcon src={plus} alt="Criar novo cliente" />
         </Link>
       </Header>
@@ -58,6 +58,7 @@ export default function Customers() {
                 cpf={customer.cpf}
                 birth={new Date(customer.birthdate).toLocaleDateString("pt-BR")}
                 spouse={customer.spouse}
+                id={customer.id}
               />
             ))}
           </CardsContainer>

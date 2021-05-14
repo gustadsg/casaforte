@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import PersonalInfo from "./PersonalInfo";
 import PersonalAddress from "./PersonalAddress";
+import WorkAddress from "./WorkAddress";
+import ComertialReferences from "./ComertialReferences";
 
 export default function NewCustomer() {
   const [current, setCurrent] = useState(0);
@@ -18,6 +20,22 @@ export default function NewCustomer() {
       setCurrent={setCurrent}
       current={current}
       total={4}
+      customer={customer}
+    />,
+    <WorkAddress
+      key={2}
+      setCurrent={setCurrent}
+      current={current}
+      total={4}
+      customer={customer}
+    />,
+    <ComertialReferences
+      key={3}
+      setCurrent={setCurrent}
+      current={current}
+      total={4}
+      customer={customer}
+      setCustomer={setCustomer}
     />,
   ];
 

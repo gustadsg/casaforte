@@ -1,30 +1,19 @@
 import React, { useState } from "react";
 import { message } from "antd";
-import { Button, Input, PageTitle, TextArea, Loading } from "../../components";
-import { Centered, Divided, Section, SPageIndex } from "./styles";
+import { Input, PageSubtitle, TextArea, Loading } from "../../components";
+import { Divided, Section } from "./styles";
 import api from "../../services/api";
 import Select from "../../components/UI/Select";
 
-export default function PersonalInfo({
-  setCurrent,
-  current,
-  total,
-  setCustomer,
-}) {
+export default function PersonalInfo({ setCustomer, customer }) {
   const [loading, setLoading] = useState(false);
-  const [inputs, setInputs] = useState({});
-
-  function handleChange(e) {
-    setInputs({ ...inputs, [e.target.name]: e.target.value });
-  }
 
   function handleClick() {
     setLoading(true);
     api
-      .post("/customer", inputs)
+      .post("/customer", customer)
       .then((response) => {
         setCustomer(response.data.result);
-        setCurrent(current + 1);
       })
       .catch((err) =>
         message.error(
@@ -39,18 +28,18 @@ export default function PersonalInfo({
   return (
     <div>
       {loading && <Loading />}
-      <PageTitle>Informações Pessoais</PageTitle>
+      <PageSubtitle>Informações Pessoais</PageSubtitle>
       <Divided>
         <Section>
           {letfSide.map((input) =>
             input["type"] === "select" ? (
               <Select
                 required={input["required"]}
-                name={input.name}
-                label={input.label}
+                name={input?.name}
+                label={input?.label}
                 width="80%"
-                value={inputs[input.name]}
-                onChange={handleChange}
+                value={customer[input?.name]}
+                disabled
               >
                 {input["options"]?.map((opt) => (
                   <option value={opt.value}>{opt.title}</option>
@@ -59,12 +48,12 @@ export default function PersonalInfo({
             ) : (
               <Input
                 required={input["required"]}
-                name={input.name}
-                label={input.label}
+                name={input?.name}
+                label={input?.label}
                 width="80%"
-                value={inputs[input.name]}
-                onChange={handleChange}
+                value={customer[input?.name]}
                 type={input["type"]}
+                disabled
               />
             )
           )}
@@ -73,23 +62,24 @@ export default function PersonalInfo({
           {rightSide.map((input) => (
             <Input
               required={input["required"]}
-              name={input.name}
-              label={input.label}
+              name={input?.name}
+              label={input?.label}
               width="80%"
-              value={inputs[input.name]}
-              onChange={handleChange}
+              value={customer[input?.name]}
               type={input["type"]}
+              disabled
             />
           ))}
         </Section>
       </Divided>
       <Section>
-        <TextArea name="observation" label="Observações" width="100%" />
+        <TextArea
+          name="observation"
+          label="Observações"
+          width="100%"
+          disabled
+        />
       </Section>
-      <Centered>
-        <Button onClick={handleClick}>Próxima etapa</Button>
-        <SPageIndex total={total} current={current + 1} />
-      </Centered>
     </div>
   );
 }

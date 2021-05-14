@@ -1,11 +1,18 @@
 import styled from "styled-components";
 import { ReferenceCard } from "../../components";
-import PageIndex from "../../components/UI/PageIndex";
+
+export const Wrapper = styled.div``;
 
 export const Divided = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin: 0;
+  padding: 0;
+
+  & > h2 {
+    margin: 0;
+  }
 `;
 
 export const Section = styled.section`
@@ -17,18 +24,6 @@ export const Section = styled.section`
   & > label {
     margin-top: 20px;
   }
-`;
-
-export const Centered = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 70px;
-`;
-
-export const SPageIndex = styled(PageIndex)`
-  margin: 20px 0;
 `;
 
 export const CardsContainer = styled.div`

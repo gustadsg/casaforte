@@ -20,7 +20,7 @@ export default function CustomerCard({
         <Text>Cônjuge: {spouse}</Text>
       </Section>
       <Section>
-        <Button as={Link} to="/teste">
+        <Button as={Link} to={`/cliente/${id}`}>
           Detalhes
         </Button>
       </Section>

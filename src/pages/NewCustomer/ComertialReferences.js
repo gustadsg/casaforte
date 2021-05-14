@@ -1,14 +1,24 @@
 import React, { useState } from "react";
 import { message } from "antd";
-import { Button, Input, PageTitle, TextArea, Loading } from "../../components";
-import { Centered, Divided, Section, SPageIndex } from "./styles";
+import { Link } from "react-router-dom";
+import { Button, Input, PageTitle, Loading, Icon } from "../../components";
+import {
+  CardsContainer,
+  Centered,
+  Divided,
+  Section,
+  SPageIndex,
+  SReferenceCard,
+} from "./styles";
 import api from "../../services/api";
 import Select from "../../components/UI/Select";
 
-export default function PersonalInfo({
-  setCurrent,
+import plus from "../../assets/plus.svg";
+
+export default function ComertialReferences({
   current,
   total,
+  customer,
   setCustomer,
 }) {
   const [loading, setLoading] = useState(false);
@@ -19,12 +29,20 @@ export default function PersonalInfo({
   }
 
   function handleClick() {
+    const data = { ...inputs, customer_id: customer.id };
     setLoading(true);
     api
-      .post("/customer", inputs)
-      .then((response) => {
-        setCustomer(response.data.result);
-        setCurrent(current + 1);
+      .post("/customer/comertial_reference", data)
+      .then(async (response) => {
+        await api
+          .get(`/customer/${customer.id}`)
+          .then((res) => setCustomer(res?.data))
+          .catch((err) => {
+            message.error(
+              err?.response?.data?.message ||
+                "Não foi possível obter dados do cliente"
+            );
+          });
       })
       .catch((err) =>
         message.error(
@@ -36,10 +54,28 @@ export default function PersonalInfo({
       });
   }
 
+  function handleRemove(id) {
+    api
+      .delete(`/comertial_reference/${id}`)
+      .then(async () => {
+        setInputs({});
+        await api
+          .get(`/customer/${customer.id}`)
+          .then((res) => setCustomer(res?.data))
+          .catch((err) => {
+            message.error(
+              err?.response?.data?.message ||
+                "Não foi possível obter dados do cliente"
+            );
+          });
+      })
+      .catch((error) => message.error(error.response.data.message));
+  }
+
   return (
     <div>
       {loading && <Loading />}
-      <PageTitle>Informações Pessoais</PageTitle>
+      <PageTitle>Referências Comerciais</PageTitle>
       <Divided>
         <Section>
           {letfSide.map((input) =>
@@ -83,11 +119,24 @@ export default function PersonalInfo({
           ))}
         </Section>
       </Divided>
-      <Section>
-        <TextArea name="observation" label="Observações" width="100%" />
-      </Section>
       <Centered>
-        <Button onClick={handleClick}>Próxima etapa</Button>
+        <Icon src={plus} onClick={handleClick} style={{ cursor: "pointer" }} />
+      </Centered>
+      <CardsContainer>
+        {customer?.comertialReferences?.map((ref) => (
+          <>
+            <SReferenceCard
+              name={ref.name}
+              phone={ref.phone}
+              onRemove={() => handleRemove(ref.id)}
+            />
+          </>
+        ))}
+      </CardsContainer>
+      <Centered>
+        <Button as={Link} to={"/"}>
+          Concluir
+        </Button>
         <SPageIndex total={total} current={current + 1} />
       </Centered>
     </div>
@@ -101,60 +150,46 @@ const letfSide = [
     required: true,
   },
   {
-    label: "CPF",
-    name: "cpf",
+    label: "CEP",
+    name: "cep",
+  },
+  {
+    label: "Estado",
+    name: "state",
+  },
+  {
+    label: "Bairro",
+    name: "neighbourhood",
     required: true,
   },
   {
-    label: "Sexo",
-    name: "sex",
+    label: "Número",
+    name: "number",
+    type: "number",
     required: true,
-    type: "select",
-    options: [
-      {
-        title: "Selecione uma opção",
-        value: null,
-      },
-      {
-        title: "Masculino",
-        value: "male",
-      },
-      {
-        title: "Feminino",
-        value: "female",
-      },
-    ],
-  },
-  {
-    label: "Cônjuge",
-    name: "spouse",
-  },
-  {
-    label: "Pai",
-    name: "father",
   },
 ];
 const rightSide = [
   {
-    label: "Email",
-    name: "email",
-  },
-  {
-    label: "RG",
-    name: "rg",
-  },
-  {
-    label: "Nascimento",
-    name: "birthdate",
-    type: "date",
+    label: "Fone",
+    name: "phone",
     required: true,
   },
   {
-    label: "Fone",
-    name: "phone",
+    label: "País",
+    name: "country",
   },
   {
-    label: "Mãe",
-    name: "mother",
+    label: "Cidade",
+    name: "city",
+  },
+  {
+    label: "Rua",
+    name: "street",
+    required: true,
+  },
+  {
+    label: "Complemento",
+    name: "complement",
   },
 ];
