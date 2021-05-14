@@ -44,22 +44,24 @@ export default function PersonalAddress({
         <Section>
           {letfSide.map((input) => (
             <Input
-              name={input.name}
-              label={input.label}
+              name={input?.name}
+              label={input?.label}
               onChange={handleChange}
               width="80%"
-              required={input.required}
+              required={input?.required}
+              value={inputs[input?.name]}
             />
           ))}
         </Section>
         <Section>
           {rightSide.map((input) => (
             <Input
-              name={input.name}
-              label={input.label}
+              name={input?.name}
+              label={input?.label}
               onChange={handleChange}
               width="80%"
-              required={input.required}
+              required={input?.required}
+              value={inputs[input?.name]}
             />
           ))}
         </Section>
