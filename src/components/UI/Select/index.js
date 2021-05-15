@@ -48,7 +48,7 @@ Select.Wrapper = styled.div`
 
 Select.Select = styled.select`
   border: none;
-  width: 80%;
+  width: 100%;
   padding: 5px;
   margin-right: 5px;
   background-color: white;

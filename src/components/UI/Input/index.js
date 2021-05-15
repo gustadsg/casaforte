@@ -48,7 +48,7 @@ Input.Wrapper = styled.div`
 
 Input.Input = styled.input`
   border: none;
-  width: 80%;
+  width: 100%;
   padding: 5px;
   margin-right: 5px;
 
