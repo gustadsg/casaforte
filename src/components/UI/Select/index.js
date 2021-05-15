@@ -52,6 +52,7 @@ Select.Select = styled.select`
   padding: 5px;
   margin-right: 5px;
   background-color: white;
+  cursor: ${({ disabled }) => disabled && "not-allowed"};
 
   &:active {
     border: none;

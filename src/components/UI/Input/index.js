@@ -51,6 +51,7 @@ Input.Input = styled.input`
   width: 100%;
   padding: 5px;
   margin-right: 5px;
+  cursor: ${({ disabled }) => disabled && "not-allowed"};
 
   &:active {
     border: none;

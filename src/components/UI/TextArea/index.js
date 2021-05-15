@@ -45,6 +45,7 @@ Input.TextArea = styled.textarea`
   min-height: 50px;
   padding: 5px;
   margin-right: 5px;
+  cursor: ${({ disabled }) => disabled && "not-allowed"};
 
   &:active {
     border: ${({ theme }) => `solid 2px ${theme.grey}`};
