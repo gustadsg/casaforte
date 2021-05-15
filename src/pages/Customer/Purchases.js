@@ -12,7 +12,12 @@ export default function Purchases({ purchases, id }) {
     <Wrapper>
       <Divided>
         <PageSubtitle>Compras</PageSubtitle>
-        <Link to={`/compra/cadastro/?customer_id=${id}`}>
+        <Link
+          to={{
+            pathname: `/compra/`,
+            state: { customer_id: id },
+          }}
+        >
           <Icon src={plus} alt="nova compra" style={{ cursor: "pointer" }} />
         </Link>
       </Divided>
