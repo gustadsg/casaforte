@@ -6,6 +6,8 @@ import { Wrapper, Divided } from "./styles";
 import plus from "../../assets/plus.svg";
 
 export default function Purchases({ purchases, id }) {
+  purchases?.sort((b, a) => new Date(a.createdAt) - new Date(b.createdAt));
+
   return (
     <Wrapper>
       <Divided>
