@@ -1,13 +1,15 @@
 const electron = require("electron");
 const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
+const { BrowserWindow, screen } = electron;
 const path = require("path");
 const isDev = require("electron-is-dev");
 let mainWindow;
+
 function createWindow() {
+  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
   mainWindow = new BrowserWindow({
-    width: 2000,
-    height: 2000,
+    width,
+    height,
     minWidth: 800,
     minHeight: 700,
     simpleFullscreen: true,
