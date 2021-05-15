@@ -84,7 +84,7 @@ export default function PersonalInfo({
         </Section>
       </Divided>
       <Section>
-        <TextArea name="observation" label="Observações" width="100%" />
+        <TextArea name="observations" label="Observações" width="100%" />
       </Section>
       <Centered>
         <Button onClick={handleClick}>Próxima etapa</Button>
