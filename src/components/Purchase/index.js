@@ -3,6 +3,9 @@ import { useTheme } from "styled-components";
 import { Parcel } from "../../components";
 import { Wrapper, Info, Header, Description, ParcelsContainer } from "./styles";
 
+import print from "../../assets/print.svg";
+import { Icon } from "../UI";
+
 export default function Purchase({ purchase, ...rest }) {
   const theme = useTheme();
   const [year, month, day] = purchase?.createdAt?.split("-");
@@ -16,6 +19,14 @@ export default function Purchase({ purchase, ...rest }) {
         <Info>R$ {purchase?.value}</Info>
         <Info>{purchase?.purchaseMethod}</Info>
         <Info>{purchase?.numParcels} vezes</Info>
+
+        <Icon
+          src={print}
+          alt="imprimir"
+          size="30px"
+          style={{ cursor: "pointer" }}
+          onClick={handlePrintPurchase}
+        />
       </Header>
       <Description>{purchase?.description}</Description>
       <Description color={theme?.danger}>{purchase?.observations}</Description>
@@ -26,4 +37,9 @@ export default function Purchase({ purchase, ...rest }) {
       </ParcelsContainer>
     </Wrapper>
   );
+}
+
+function handlePrintPurchase(e) {
+  e.preventDefault();
+  alert("essa funcionalidade ainda não está pronta");
 }

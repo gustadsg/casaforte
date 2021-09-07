@@ -68,7 +68,7 @@ export default function Purchase({ location }) {
     },
     {
       label: "Pago",
-      name: "is_payed",
+      name: "is_paid",
       type: "checkbox",
       required: true,
     },

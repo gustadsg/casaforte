@@ -4,6 +4,7 @@ import theme from "./components/UI/variables";
 import { GlobalStyle } from "./globalStyle";
 import { Navbar, PageWrapper } from "./components";
 import { BrowserRouter } from "react-router-dom";
+import "antd/dist/antd.css";
 
 function App() {
   return (

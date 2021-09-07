@@ -1,4 +1,5 @@
 import styled from "styled-components/macro";
+import { Icon } from "../UI";
 
 export const Wrapper = styled.div`
   border: ${({ theme }) => `1px solid ${theme.grey}`};
@@ -34,4 +35,8 @@ export const Content = styled.div`
 export const Description = styled.div`
   font-weight: ${({ theme }) => theme.medium};
   color: ${({ theme }) => theme.grey};
+`;
+
+export const SIcon = styled(Icon)`
+  margin-right: 10px;
 `;
